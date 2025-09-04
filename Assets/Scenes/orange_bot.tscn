@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://botsg7pmx3hwm"]
+
+[ext_resource type="Script" uid="uid://lcq0bwmumtuh" path="res://Assets/Scripts/orange_player_controll.gd" id="1_7fsw1"]
+[ext_resource type="Texture2D" uid="uid://d0w33qtqqk1tf" path="res://Assets/Sprites/OrangeRobot_SpriteSheet.png" id="1_g8ufn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7fsw1"]
+radius = 7.0
+height = 20.0
+
+[node name="Orange" type="CharacterBody2D"]
+script = ExtResource("1_7fsw1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_7fsw1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -16)
+texture = ExtResource("1_g8ufn")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
