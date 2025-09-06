@@ -1,0 +1,175 @@
+[gd_scene load_steps=12 format=3 uid="uid://b1dopy0hgihgl"]
+
+[ext_resource type="Script" uid="uid://l8ns7cg3a36l" path="res://Assets/Scenes/modes.gd" id="1_e7usy"]
+[ext_resource type="Texture2D" uid="uid://k8y8kocvovt8" path="res://Assets/Sprites/single-player.png" id="1_inuh0"]
+[ext_resource type="FontFile" uid="uid://dep1sjw7y40em" path="res://Assets/Fonts/BoldPixels1.4.ttf" id="2_e7usy"]
+[ext_resource type="Texture2D" uid="uid://dye8uor7ix04i" path="res://Assets/Sprites/two-player.png" id="3_y32tr"]
+[ext_resource type="AudioStream" uid="uid://birwu4bk7ydam" path="res://Assets/Sounds/bg-music.mp3" id="5_y32tr"]
+[ext_resource type="AudioStream" uid="uid://7eymgrswnlrv" path="res://Assets/Sounds/switch.mp3" id="6_fc4jh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc4jh"]
+size = Vector2(907.5, 848.5)
+
+[sub_resource type="Animation" id="Animation_2412i"]
+resource_name = "change"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a4lpr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bf86l"]
+resource_name = "recieve"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i8ail"]
+_data = {
+&"RESET": SubResource("Animation_a4lpr"),
+&"change": SubResource("Animation_2412i"),
+&"recieve": SubResource("Animation_bf86l")
+}
+
+[node name="modes" type="Node2D"]
+script = ExtResource("1_e7usy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -18.0
+offset_top = -6.0
+offset_right = 22.0
+offset_bottom = 34.0
+scale = Vector2(48.6521, 27.9678)
+mouse_filter = 2
+color = Color(0.172833, 0.172833, 0.172833, 1)
+
+[node name="Single" type="Area2D" parent="."]
+
+[node name="Single-player" type="Sprite2D" parent="Single"]
+position = Vector2(523, 558)
+scale = Vector2(20, 20)
+texture = ExtResource("1_inuh0")
+
+[node name="Label" type="Label" parent="Single"]
+offset_left = 36.0
+offset_top = 70.0
+offset_right = 1004.0
+offset_bottom = 203.0
+theme_override_fonts/font = ExtResource("2_e7usy")
+theme_override_font_sizes/font_size = 150
+text = "Single Player"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Single"]
+position = Vector2(526.25, 472.75)
+shape = SubResource("RectangleShape2D_fc4jh")
+
+[node name="Label2" type="Label" parent="Single"]
+visible = false
+offset_left = 246.0
+offset_top = 965.0
+offset_right = 821.0
+offset_bottom = 1007.0
+theme_override_font_sizes/font_size = 30
+text = "Speedrun kinda if you wanna chill alone"
+
+[node name="two" type="Area2D" parent="."]
+
+[node name="Two-player" type="Sprite2D" parent="two"]
+position = Vector2(1440, 558)
+scale = Vector2(20, 20)
+texture = ExtResource("3_y32tr")
+
+[node name="Label" type="Label" parent="two"]
+offset_left = 957.0
+offset_top = 70.0
+offset_right = 1925.0
+offset_bottom = 203.0
+theme_override_fonts/font = ExtResource("2_e7usy")
+theme_override_font_sizes/font_size = 150
+text = "Two Players"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="two"]
+position = Vector2(1450, 473)
+shape = SubResource("RectangleShape2D_fc4jh")
+
+[node name="Label2" type="Label" parent="two"]
+visible = false
+offset_left = 1177.0
+offset_top = 965.0
+offset_right = 1752.0
+offset_bottom = 1007.0
+theme_override_font_sizes/font_size = 30
+text = "2 player battle if you have the guts"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_y32tr")
+volume_db = -20.0
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_fc4jh")
+
+[node name="Scene transition" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Scene transition"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -6.0
+offset_right = 31.0
+offset_bottom = 34.0
+scale = Vector2(48.791, 28.3247)
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Scene transition"]
+libraries = {
+&"": SubResource("AnimationLibrary_i8ail")
+}
+
+[connection signal="mouse_entered" from="Single" to="." method="_on_single_mouse_entered"]
+[connection signal="mouse_exited" from="Single" to="." method="_on_single_mouse_exited"]
+[connection signal="mouse_entered" from="two" to="." method="_on_two_mouse_entered"]
+[connection signal="mouse_exited" from="two" to="." method="_on_two_mouse_exited"]

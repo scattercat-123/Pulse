@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dlwn6d0lioi55"]
+[gd_scene load_steps=28 format=3 uid="uid://dlwn6d0lioi55"]
 
 [ext_resource type="Script" uid="uid://cx08ps4l36ru5" path="res://Assets/Scripts/intro.gd" id="1_4yfw4"]
 [ext_resource type="Texture2D" uid="uid://0ctc4h46hhmq" path="res://Assets/World/night-sky.png" id="2_ui603"]
@@ -56,6 +56,43 @@ size = Vector2(129.985, 16.0738)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idqtc"]
 size = Vector2(744.772, 98.6711)
+
+[sub_resource type="Animation" id="Animation_idqtc"]
+resource_name = "zooom_start_game"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Start-Button Area/Start-game:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.909), Vector2(30, 34.087)]
+}
+
+[sub_resource type="Animation" id="Animation_ie13j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Start-Button Area/Start-game:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.909)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0syiu"]
+_data = {
+&"RESET": SubResource("Animation_ie13j"),
+&"zooom_start_game": SubResource("Animation_idqtc")
+}
 
 [sub_resource type="Animation" id="Animation_i60fp"]
 length = 0.001
@@ -406,6 +443,60 @@ _data = {
 &"intro": SubResource("Animation_sthsd")
 }
 
+[sub_resource type="Animation" id="Animation_2412i"]
+resource_name = "change"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a4lpr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bf86l"]
+resource_name = "recieve"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i8ail"]
+_data = {
+&"RESET": SubResource("Animation_a4lpr"),
+&"change": SubResource("Animation_2412i"),
+&"recieve": SubResource("Animation_bf86l")
+}
+
 [node name="Intro" type="Node2D"]
 script = ExtResource("1_4yfw4")
 
@@ -445,10 +536,10 @@ mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Menu"]
-offset_left = 255.0
-offset_top = 359.0
-offset_right = 295.0
-offset_bottom = 399.0
+offset_left = 254.286
+offset_top = -367.143
+offset_right = 294.286
+offset_bottom = -327.143
 scale = Vector2(0.4, 0.748572)
 metadata/_edit_use_anchors_ = true
 
@@ -468,9 +559,9 @@ shape = SubResource("RectangleShape2D_epv24")
 [node name="Controls-Button-Area" type="Area2D" parent="Menu"]
 
 [node name="Controls-button" type="Sprite2D" parent="Menu/Controls-Button-Area"]
-position = Vector2(560.581, -198.792)
+position = Vector2(560.312, -192.716)
 rotation = -0.00523599
-scale = Vector2(0.565, 0.603)
+scale = Vector2(0.565, 0.698205)
 texture = ExtResource("6_677bp")
 script = ExtResource("7_sthsd")
 
@@ -480,6 +571,12 @@ shape = SubResource("RectangleShape2D_idqtc")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Menu"]
 stream = ExtResource("6_sthsd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
+libraries = {
+&"": SubResource("AnimationLibrary_0syiu")
+}
+speed_scale = 2.0
 
 [node name="Bg_intro" type="ColorRect" parent="."]
 offset_left = -17.0
@@ -556,6 +653,31 @@ autoplay = "intro"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_i60fp")
 volume_db = -20.0
+
+[node name="Scene transition" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Scene transition"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -6.0
+offset_right = 31.0
+offset_bottom = 34.0
+scale = Vector2(48.791, 28.3247)
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Scene transition"]
+libraries = {
+&"": SubResource("AnimationLibrary_i8ail")
+}
+speed_scale = 1.5
 
 [connection signal="mouse_entered" from="Menu/Start-Button Area" to="Menu/Start-Button Area/Start-game" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Menu/Start-Button Area" to="Menu/Start-Button Area/Start-game" method="_on_area_2d_mouse_exited"]

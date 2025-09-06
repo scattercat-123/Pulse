@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://capl7jk4ssrfq"]
+[gd_scene load_steps=16 format=3 uid="uid://capl7jk4ssrfq"]
 
 [ext_resource type="Texture2D" uid="uid://beo5siwc66r6s" path="res://Assets/World/cloudy-sky/1.png" id="1_4g2ux"]
 [ext_resource type="Script" uid="uid://dau6noc0wyyur" path="res://Assets/Scripts/game_modes.gd" id="1_jd74c"]
@@ -9,9 +9,64 @@
 [ext_resource type="Texture2D" uid="uid://262mvfiemd04" path="res://Assets/Sprites/Game-Modes.png" id="7_eheta"]
 [ext_resource type="FontFile" uid="uid://c805q84otr5r0" path="res://Assets/Fonts/Daydream DEMO.otf" id="7_jd74c"]
 [ext_resource type="AudioStream" uid="uid://birwu4bk7ydam" path="res://Assets/Sounds/bg-music.mp3" id="9_p6o2g"]
+[ext_resource type="AudioStream" uid="uid://7eymgrswnlrv" path="res://Assets/Sounds/switch.mp3" id="10_x4m42"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6o2g"]
-size = Vector2(600, 410.5)
+size = Vector2(600, 423.5)
+
+[sub_resource type="Animation" id="Animation_a4lpr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2412i"]
+resource_name = "change"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bf86l"]
+resource_name = "recieve"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i8ail"]
+_data = {
+&"RESET": SubResource("Animation_a4lpr"),
+&"change": SubResource("Animation_2412i"),
+&"recieve": SubResource("Animation_bf86l")
+}
 
 [node name="game-mode" type="Node2D"]
 script = ExtResource("1_jd74c")
@@ -51,14 +106,14 @@ scale = Vector2(10, 10)
 texture = ExtResource("6_4g2ux")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Build-Battle/Build Battle logo"]
-position = Vector2(348, 541.75)
+position = Vector2(348, 548.25)
 shape = SubResource("RectangleShape2D_p6o2g")
 
 [node name="Build Battle" type="Label" parent="Build-Battle"]
 offset_left = 74.0
-offset_top = 672.0
+offset_top = 682.0
 offset_right = 636.0
-offset_bottom = 754.0
+offset_bottom = 764.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_jd74c")
 theme_override_font_sizes/font_size = 50
@@ -67,6 +122,33 @@ text = "Build Battle"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_p6o2g")
 volume_db = -20.0
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_x4m42")
+
+[node name="Scene transition" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Scene transition"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -6.0
+offset_right = 31.0
+offset_bottom = 34.0
+scale = Vector2(48.791, 28.3247)
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Scene transition"]
+libraries = {
+&"": SubResource("AnimationLibrary_i8ail")
+}
 
 [connection signal="mouse_entered" from="Build-Battle/Build Battle logo" to="." method="_on_build_battle_logo_mouse_entered"]
 [connection signal="mouse_exited" from="Build-Battle/Build Battle logo" to="." method="_on_build_battle_logo_mouse_exited"]
