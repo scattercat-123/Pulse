@@ -1,3 +1,8 @@
+res://Assets/Scenes/intro.tscn
 res://Assets/Scenes/orange_bot.tscn
-res://Assets/Scripts/orange_player_controll.gd
-res://Assets/Scenes/area.tscn
+res://Assets/Scripts/intro.gd
+res://Assets/Scripts/start_game.gd
+res://Assets/Scripts/controls_button.gd
+res://Assets/Scenes/game_mode.tscn
+res://Assets/Scripts/Global.gd
+res://Assets/Scripts/game_modes.gd

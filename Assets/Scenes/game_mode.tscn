@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://capl7jk4ssrfq"]
+
+[ext_resource type="Texture2D" uid="uid://beo5siwc66r6s" path="res://Assets/World/cloudy-sky/1.png" id="1_4g2ux"]
+[ext_resource type="Script" uid="uid://dau6noc0wyyur" path="res://Assets/Scripts/game_modes.gd" id="1_jd74c"]
+[ext_resource type="Texture2D" uid="uid://dk2cjns8us2pf" path="res://Assets/World/cloudy-sky/2.png" id="2_jd74c"]
+[ext_resource type="Texture2D" uid="uid://cp1q0p44d1fcg" path="res://Assets/World/cloudy-sky/3.png" id="3_p6o2g"]
+[ext_resource type="Texture2D" uid="uid://con5l4r43wy26" path="res://Assets/World/cloudy-sky/4.png" id="4_x4m42"]
+[ext_resource type="Texture2D" uid="uid://cj3835nngwdq6" path="res://Assets/Sprites/Build-Battle.png" id="6_4g2ux"]
+[ext_resource type="Texture2D" uid="uid://262mvfiemd04" path="res://Assets/Sprites/Game-Modes.png" id="7_eheta"]
+[ext_resource type="FontFile" uid="uid://c805q84otr5r0" path="res://Assets/Fonts/Daydream DEMO.otf" id="7_jd74c"]
+[ext_resource type="AudioStream" uid="uid://birwu4bk7ydam" path="res://Assets/Sounds/bg-music.mp3" id="9_p6o2g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6o2g"]
+size = Vector2(600, 410.5)
+
+[node name="game-mode" type="Node2D"]
+script = ExtResource("1_jd74c")
+
+[node name="bg" type="Node2D" parent="."]
+position = Vector2(-1299, -687)
+scale = Vector2(3.5, 3.5)
+
+[node name="1" type="Sprite2D" parent="bg"]
+position = Vector2(642, 354)
+texture = ExtResource("1_4g2ux")
+
+[node name="2" type="Sprite2D" parent="bg"]
+position = Vector2(642, 354)
+texture = ExtResource("2_jd74c")
+
+[node name="3" type="Sprite2D" parent="bg"]
+position = Vector2(642, 354)
+texture = ExtResource("3_p6o2g")
+
+[node name="4" type="Sprite2D" parent="bg"]
+position = Vector2(642, 354)
+texture = ExtResource("4_x4m42")
+
+[node name="Game-modes" type="Sprite2D" parent="."]
+position = Vector2(960, 154)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_eheta")
+
+[node name="Build-Battle" type="Node2D" parent="."]
+
+[node name="Build Battle logo" type="Area2D" parent="Build-Battle"]
+
+[node name="Build-battle" type="Sprite2D" parent="Build-Battle/Build Battle logo"]
+position = Vector2(357, 504)
+scale = Vector2(10, 10)
+texture = ExtResource("6_4g2ux")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Build-Battle/Build Battle logo"]
+position = Vector2(348, 541.75)
+shape = SubResource("RectangleShape2D_p6o2g")
+
+[node name="Build Battle" type="Label" parent="Build-Battle"]
+offset_left = 74.0
+offset_top = 672.0
+offset_right = 636.0
+offset_bottom = 754.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_jd74c")
+theme_override_font_sizes/font_size = 50
+text = "Build Battle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_p6o2g")
+volume_db = -20.0
+
+[connection signal="mouse_entered" from="Build-Battle/Build Battle logo" to="." method="_on_build_battle_logo_mouse_entered"]
+[connection signal="mouse_exited" from="Build-Battle/Build Battle logo" to="." method="_on_build_battle_logo_mouse_exited"]
