@@ -2789,6 +2789,8 @@ stream = ExtResource("152_ig206")
 [node name="correct" type="AudioStreamPlayer" parent="game_gui/SFX"]
 stream = ExtResource("161_1vo53")
 
+[node name="machine thing" type="AudioStreamPlayer" parent="game_gui/SFX"]
+
 [connection signal="body_entered" from="Animated_Stuff/Animated_Screen/Area2D" to="Orange" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Boxes/Box_robot_body" to="Orange" method="_on_box_robot_body_body_entered"]
 [connection signal="body_entered" from="Boxes/Box_robot_head" to="Orange" method="_on_box_robot_head_body_entered"]

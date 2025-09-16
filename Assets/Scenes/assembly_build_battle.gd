@@ -8,6 +8,7 @@ extends Node2D
 @onready var instruction: Label = $Label3
 @onready var submit_button: Sprite2D = $"Submit-button"
 @onready var correct: AudioStreamPlayer = $"../SFX/correct"
+@onready var machine_thing: AudioStreamPlayer = $"../SFX/machine thing"
 
 var card_done = false
 var dragging_head = false
@@ -39,9 +40,9 @@ func _process(_delta: float) -> void:
 				correct.play()
 				play_once = true
 		else:
-			instruction.text = ("Great! Click submit to start production.")
+			instruction.text = ("Great! Click submit to 
+			start production.")
 		submit_button.visible = true
-		
 
 	if Input.is_action_pressed("click"):
 		if dragging_head and head_pos == false:
@@ -80,8 +81,7 @@ func _on_head_mouse_exited() -> void:
 func _on_body_outline_area_entered(area: Area2D) -> void:
 	robot_body.global_position = body_outline.global_position
 	body_pos = true
-
-
+	machine_thing.play()
 
 func _on_head_outline_area_entered(area: Area2D) -> void:
 	robot_head.global_position = head_outline.global_position

@@ -12,3 +12,6 @@ res://Assets/dialogues/bot_sprite_potrait.tscn
 res://Assets/dialogues/racoon_sprite.tscn
 res://Assets/Scenes/animated_screen.tscn
 res://Assets/Scripts/card_swipe_build_battle.gd
+res://addons/dialogic/Editor/Events/styles/ResourceMenuPanelBackground.tres
+res://addons/dialogic/Editor/Events/styles/unselected_stylebox.tres
+res://addons/dialogic/Editor/Theme/MainTheme.tres
