@@ -57,6 +57,21 @@ size = Vector2(129.985, 16.0738)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idqtc"]
 size = Vector2(744.772, 98.6711)
 
+[sub_resource type="Animation" id="Animation_ie13j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Start-Button Area/Start-game:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.909)]
+}
+
 [sub_resource type="Animation" id="Animation_idqtc"]
 resource_name = "zooom_start_game"
 length = 3.0
@@ -71,21 +86,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0.8, 0.909), Vector2(30, 34.087)]
-}
-
-[sub_resource type="Animation" id="Animation_ie13j"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Start-Button Area/Start-game:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.8, 0.909)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0syiu"]
@@ -443,6 +443,21 @@ _data = {
 &"intro": SubResource("Animation_sthsd")
 }
 
+[sub_resource type="Animation" id="Animation_a4lpr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_2412i"]
 resource_name = "change"
 length = 1.5
@@ -457,21 +472,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_a4lpr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_bf86l"]
@@ -536,10 +536,11 @@ mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Menu"]
-offset_left = 254.286
-offset_top = -367.143
-offset_right = 294.286
-offset_bottom = -327.143
+layout_mode = 0
+offset_left = 255.0
+offset_top = 359.0
+offset_right = 295.0
+offset_bottom = 399.0
 scale = Vector2(0.4, 0.748572)
 metadata/_edit_use_anchors_ = true
 
@@ -637,12 +638,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="developers note" type="Label" parent="."]
 visible = false
-offset_left = 160.0
-offset_top = 37.0
-offset_right = 1739.0
-offset_bottom = 92.0
-theme_override_font_sizes/font_size = 40
-text = "Developers Note: Hello ppl! This game's 2d was created with aseprite . . .. . . . . . ......"
+offset_left = 166.0
+offset_top = 137.0
+offset_right = 1745.0
+offset_bottom = 834.0
+theme_override_font_sizes/font_size = 100
+text = "Developers Note:
+Please be in fullscreen mode by clicking on the top right and also unmute your volume for the best experience"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

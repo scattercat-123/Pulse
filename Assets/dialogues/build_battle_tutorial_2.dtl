@@ -1,0 +1,7 @@
+[signal arg="continue_after_head_collected"]
+label body
+Mr-Racoon: Nice! You are doing great! Now collect the other part of the robot! Follow the orange marker!
+if {body} == false:
+	jump body
+elif {body} == true:
+	[end_timeline]

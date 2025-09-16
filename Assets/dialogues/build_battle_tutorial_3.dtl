@@ -1,0 +1,9 @@
+label continue_body
+Mr-Racoon: Wow! You are really doing great for a first timer... After you collect the head and the body, deposit them at the builder for the building process! This will be fun!
+[signal arg="poss_marker"]
+label approach
+Mr-Racoon: First, approach the screen at the work station, follow the orange marker to reach there...
+if {screen} == false:
+	jump approach
+elif {screen} == true:
+	[end_timeline]

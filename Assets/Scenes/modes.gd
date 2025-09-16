@@ -2,6 +2,7 @@ extends Node2D
 
 var single_player_hover = false
 var two_player_hover = false
+
 @onready var bg_music: AudioStreamPlayer = $AudioStreamPlayer
 @onready var click: AudioStreamPlayer = $AudioStreamPlayer2
 @onready var scene_transition: AnimationPlayer = $"Scene transition/AnimationPlayer"
@@ -48,7 +49,7 @@ func _process(delta: float) -> void:
 	if single_player_hover and Input.is_action_just_pressed("click"):
 		scene_transition.play("change")
 		await get_tree().create_timer(1.5).timeout
-		get_tree().change_scene_to_file("res://Assets/Scenes/build_battle_singleplayer.tscn")
+		get_tree().change_scene_to_packed(Global.PlayerScene)
 
 # signals hover
 func _on_single_mouse_entered() -> void:

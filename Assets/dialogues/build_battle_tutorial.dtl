@@ -1,0 +1,9 @@
+Mr-Racoon: Welcome! This is the factory. Here you will compete yourself to build things before the time limit.
+[signal arg="intro_build_battle_tutorial"]
+label thing
+Mr-Racoon: Here you will need to collect parts of the robot. First collect the robot head by following the orange marker.
+if {head} == false:
+	[wait time="1.0" hide_text="false"]
+	jump build_battle_tutorial/thing
+elif {head} == true:
+	[end_timeline]

@@ -12,7 +12,7 @@ var fade_elapsed := 0.0
 var fading_in := false
 
 func _ready():
-	if Global.debug_mode:
+	if Global.debug_mode: # devs wanna skip cutscene for fasat debuging and testing.
 		get_tree().change_scene_to_file("res://Assets/Scenes/build_battle_singleplayer.tscn")
 	screen_size = get_viewport().size
 	base_position = night_sky.position

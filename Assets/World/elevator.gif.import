@@ -1,0 +1,14 @@
+[remap]
+
+importer="import_gif_to_animated_texture"
+type="AnimatedTexture"
+uid="uid://w7jd8liapjxh"
+path="res://.godot/imported/elevator.gif-f1aa70e67879a16c56701b21b6dc1552.tres"
+
+[deps]
+
+source_file="res://Assets/World/elevator.gif"
+dest_files=["res://.godot/imported/elevator.gif-f1aa70e67879a16c56701b21b6dc1552.tres"]
+
+[params]
+

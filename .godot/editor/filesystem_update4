@@ -1,1 +1,14 @@
 res://Assets/Scenes/build_battle_singleplayer.tscn
+res://Assets/dialogues/dialogue_style.tres
+res://Assets/Scenes/assembly_build_battle.gd
+res://Assets/dialogues/orange_bot_character.dch
+res://Assets/Scripts/build_battle_singleplayer.gd
+res://Assets/Scenes/orange_bot.tscn
+res://Assets/Scenes/intro.tscn
+res://Assets/Scenes/game_mode.tscn
+res://Assets/Scenes/modes.tscn
+res://Assets/Scenes/elevator_scene.tscn
+res://Assets/dialogues/bot_sprite_potrait.tscn
+res://Assets/dialogues/racoon_sprite.tscn
+res://Assets/Scenes/animated_screen.tscn
+res://Assets/Scripts/card_swipe_build_battle.gd
