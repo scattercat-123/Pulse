@@ -1,1 +1,2 @@
 *.tres filter=lfs diff=lfs merge=lfs -text
+.godot/imported/elevator.gif-f1aa70e67879a16c56701b21b6dc1552.tres filter=lfs diff=lfs merge=lfs -text
