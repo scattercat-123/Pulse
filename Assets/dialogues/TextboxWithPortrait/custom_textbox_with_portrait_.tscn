@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3o7qccv37ma3"]
+[gd_scene load_steps=8 format=3 uid="uid://c3o7qccv37ma3"]
 
 [ext_resource type="Script" uid="uid://d0ptqnbudhkyj" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="1_4jxq7"]
 [ext_resource type="Script" uid="uid://bk84r61kckpxa" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/speaker_portrait_textbox_layer.gd" id="1_7jt4d"]
 [ext_resource type="Script" uid="uid://bak74s0kcr0ao" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="2_y0h34"]
 [ext_resource type="Script" uid="uid://drhfq6rmdeuri" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="3_11puy"]
 [ext_resource type="Script" uid="uid://dpv2dfiv5dhmr" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="5_sr2qw"]
+[ext_resource type="FontFile" uid="uid://dep1sjw7y40em" path="res://Assets/Fonts/BoldPixels1.4.ttf" id="6_p38kf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmg1w"]
 bg_color = Color(0.254902, 0.254902, 0.254902, 1)
@@ -121,3 +122,14 @@ textbox_root = NodePath("../../..")
 
 [node name="DialogicNode_TypeSounds" type="AudioStreamPlayer" parent="Anchor/Panel/HBox/VBoxContainer/DialogicNode_DialogText"]
 script = ExtResource("5_sr2qw")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1407.0
+offset_top = 817.0
+offset_right = 1545.0
+offset_bottom = 840.0
+theme_override_colors/font_color = Color(0.635294, 0.635294, 0.635294, 0.831373)
+theme_override_fonts/font = ExtResource("6_p38kf")
+theme_override_font_sizes/font_size = 0
+text = "Press enter to skip..."

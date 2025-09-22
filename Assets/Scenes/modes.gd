@@ -50,6 +50,11 @@ func _process(delta: float) -> void:
 		scene_transition.play("change")
 		await get_tree().create_timer(1.5).timeout
 		get_tree().change_scene_to_packed(Global.PlayerScene)
+		
+	if two_player_hover and Input.is_action_just_pressed("click"):
+		scene_transition.play("change")
+		await get_tree().create_timer(1.5).timeout
+		get_tree().change_scene_to_file("res://Assets/Scenes/dev_note_build_battle_mode.tscn")
 
 # signals hover
 func _on_single_mouse_entered() -> void:

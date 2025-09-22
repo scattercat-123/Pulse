@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://wqjdac7n477s"]
+
+[ext_resource type="Texture2D" uid="uid://cu40vr6js5jk6" path="res://Assets/World/Build Battle/4 Animated objects/Hammer.png" id="1_adq7j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt4or"]
+atlas = ExtResource("1_adq7j")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fkun"]
+atlas = ExtResource("1_adq7j")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if1jb"]
+atlas = ExtResource("1_adq7j")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghs4l"]
+atlas = ExtResource("1_adq7j")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ftby"]
+atlas = ExtResource("1_adq7j")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_356wb"]
+atlas = ExtResource("1_adq7j")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adt4l"]
+atlas = ExtResource("1_adq7j")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvlvc"]
+atlas = ExtResource("1_adq7j")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6anov"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt4or")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fkun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if1jb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghs4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ftby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_356wb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adt4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvlvc")
+}],
+"loop": true,
+"name": &"hammer",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdw4w"]
+
+[node name="hammer" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_6anov")
+animation = &"hammer"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -9)
+scale = Vector2(1.5, 3)
+shape = SubResource("RectangleShape2D_xdw4w")

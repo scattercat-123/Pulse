@@ -94,7 +94,7 @@ func _on_card_mouse_entered() -> void:
 func _on_card_mouse_exited() -> void:
 	hover = false
 
-func _on_swipe_area_entered(area: Area2D) -> void:
+func _on_swipe_area_entered(_area: Area2D) -> void:
 	is_swiping = true
 	is_dragging = false
 	cardd=true
@@ -103,6 +103,6 @@ func _on_swipe_area_entered(area: Area2D) -> void:
 	drag_offset = Vector2.ZERO
 	print("swipe entered")
 
-func _on_swipe_area_exited(area: Area2D) -> void:
+func _on_swipe_area_exited(_area: Area2D) -> void:
 	is_swiping = false
 	print("swipe exited")

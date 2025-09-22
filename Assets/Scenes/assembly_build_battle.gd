@@ -9,6 +9,7 @@ extends Node2D
 @onready var submit_button: Sprite2D = $"Submit-button"
 @onready var correct: AudioStreamPlayer = $"../SFX/correct"
 @onready var machine_thing: AudioStreamPlayer = $"../SFX/machine thing"
+@onready var camera_2d: Camera2D = $"../../Orange/Camera2D"
 
 var card_done = false
 var dragging_head = false
@@ -19,6 +20,7 @@ var head_pos = false
 var body_pos = false
 var submit_button_hover = false
 var play_once = false
+signal assembly_done
 
 func _process(_delta: float) -> void:
 	if not card_done:
@@ -34,15 +36,20 @@ func _process(_delta: float) -> void:
 			
 	if head_pos and body_pos:
 		if Input.is_action_just_pressed("click") and submit_button_hover == true:
-			animation_player.play("assembly_exit")
 			instruction.text = ("Parts loading complete.")
 			if play_once == false:
 				correct.play()
 				play_once = true
+				animation_player.play("assembly_exit")
+				await animation_player.animation_finished
+				emit_signal("assembly_done")
+				camera_2d.make_current()
+
 		else:
 			instruction.text = ("Great! Click submit to 
 			start production.")
 		submit_button.visible = true
+		
 
 	if Input.is_action_pressed("click"):
 		if dragging_head and head_pos == false:
@@ -78,12 +85,12 @@ func _on_head_mouse_exited() -> void:
 
 
 
-func _on_body_outline_area_entered(area: Area2D) -> void:
+func _on_body_outline_area_entered(_area: Area2D) -> void:
 	robot_body.global_position = body_outline.global_position
 	body_pos = true
 	machine_thing.play()
 
-func _on_head_outline_area_entered(area: Area2D) -> void:
+func _on_head_outline_area_entered(_area: Area2D) -> void:
 	robot_head.global_position = head_outline.global_position
 	head_pos = true
 

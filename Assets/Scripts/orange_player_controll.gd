@@ -75,7 +75,7 @@ func _on_box_robot_body_body_entered(body: Node2D) -> void:
 
 
 func _on_area_2d_body_entered(_body: Node2D) -> void: # for card swiper
-	if Global.build_battle_robot_body_entered:
+	if Global.build_battle_robot_body_entered and Global.screen_approached == false:
 		Global.screen_approached = true
 		card_swipe.visible = true
 		camera_card.global_position = camera.global_position
