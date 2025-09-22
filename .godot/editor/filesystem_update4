@@ -10,3 +10,6 @@ res://Assets/Scenes/build_battle_singleplayer.tscn
 res://Assets/Scenes/builder.tscn
 res://Assets/Scripts/poss4.gd
 res://Assets/Scripts/robot_body_build_battle.gd
+res://addons/dialogic/Editor/Events/styles/ResourceMenuPanelBackground.tres
+res://addons/dialogic/Editor/Events/styles/unselected_stylebox.tres
+res://addons/dialogic/Editor/Theme/MainTheme.tres
